@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MovieAppProject</string>
+
+
+    //new_movie_layout
+    <string name="title_hint">Title</string>
+    <string name="description_hint">Description</string>
+    <string name="year_hint">Year</string>
+
+    <string name="action_text">Action</string>
+    <string name="horror_text">Horror</string>
+    <string name="comedy_text">Comedy</string>
+    <string name="drama_text">Drama</string>
+    <string name="thriller_text">Thriller</string>
+    <string name="western_text">Western</string>
+
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="button_done">Done</string>
+    <string name="edit_totalNumber">Total</string>
+    <string name="count_hint">Count</string>
+    <string name="add_new_movie">Add a New Movie</string>
+    <string name="add_first_movie">"Add first Movie"</string>
+
+</resources>
