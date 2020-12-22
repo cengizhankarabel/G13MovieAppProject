@@ -41,7 +41,7 @@ class JSONSerializer (private val filename : String, private  val context: Conte
             }
 
             val jsonArray = JSONTokener(jsonString.toString())
-                .nextValue() as JSONArray
+                    .nextValue() as JSONArray
 
             for (i in 0 until jsonArray.length()){
                 movieList.add(Movie(jsonArray.getJSONObject(i)))

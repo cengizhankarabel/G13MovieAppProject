@@ -4,19 +4,17 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 
 class DialogShowMovie : DialogFragment() {
 
     private var movie: Movie? = null
 
-
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+
 
         val builder = AlertDialog.Builder(this.activity!!)
         val inflater = activity!!.layoutInflater
@@ -36,9 +34,11 @@ class DialogShowMovie : DialogFragment() {
 
 
 
+
         textViewTitle.text = movie!!.title
         textViewYear.text = movie!!.year
         textViewDescription.text = movie!!.description
+
 
 
 
@@ -53,10 +53,16 @@ class DialogShowMovie : DialogFragment() {
         }
 
         builder.setView(dialogLayout)
-            .setMessage("Information of Movie")
+                .setMessage("Information of Movie")
+
+
 
         return builder.create()
     }
+
+
+
+
 
     fun sendMovieSelected(moveselected: Movie){
         movie = moveselected

@@ -16,8 +16,8 @@
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="2dp" >
 
-    <include
-        layout="@layout/cardview_content" />
+        <include
+            layout="@layout/cardview_content" />
     </androidx.cardview.widget.CardView>
 
     <TextView

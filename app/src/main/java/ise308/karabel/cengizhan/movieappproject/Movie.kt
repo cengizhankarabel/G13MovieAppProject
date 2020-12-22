@@ -4,11 +4,13 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.media.Image
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.*
 
 
 private val JSON_TITLE = "title"
@@ -16,12 +18,12 @@ private val JSON_YEAR = "year"
 private val JSON_DESCRIPTION = "description"
 private val JSON_ACTION = "action"
 private val JSON_COUNT = "count"
+private val JSON_IMAGE = "image"
 
 
 
 var count: Int = 0  //arraydeki film sayısını tutmak icin
 class Movie {
-
 
 
     var title: String? = null
@@ -33,6 +35,8 @@ class Movie {
     var drama: Boolean = false
     var thriller: Boolean = false
     var western: Boolean = false
+    //var imageOfMovie : String? = null  //bunu öğrenmemiz gerekiyor
+
 
 
 
@@ -48,8 +52,7 @@ class Movie {
         description = jsonObject.getString(JSON_DESCRIPTION)
         action = jsonObject.getBoolean(JSON_ACTION)
         jsonObject.put(JSON_COUNT,count)
-
-       count+=1
+        count+=1
 
     }
 

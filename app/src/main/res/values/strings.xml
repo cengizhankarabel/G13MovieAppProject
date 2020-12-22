@@ -17,6 +17,8 @@
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
     <string name="button_done">Done</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_edit">Edit</string>
     <string name="edit_totalNumber">Total</string>
     <string name="count_hint">Count</string>
     <string name="add_new_movie">Add a New Movie</string>

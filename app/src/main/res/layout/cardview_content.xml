@@ -17,8 +17,11 @@
 
     <ImageView
         android:id="@+id/imageView3"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/add_photo"
-        android:clickable="true"/>
+        android:clickable="true" />
+
+
 </LinearLayout>
