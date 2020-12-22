@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import ise308.karabel.cengizhan.movieappproject.SettingsActivity
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
-        adapter = MovieAdapter(this, movieList!!)
+        adapter = MovieAdapter(movieList!!)
         val layoutManager = LinearLayoutManager(applicationContext)
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.itemAnimator = DefaultItemAnimator()

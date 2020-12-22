@@ -7,16 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MovieAdapter(private val mainActivity: MainActivity, private val moveList: List<Movie>)
+class MovieAdapter(private val moveList: List<Movie>)
     : RecyclerView.Adapter<MovieAdapter.ListItemHolder>(){
 
     inner class ListItemHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
 
         internal var title = view.findViewById<View>(R.id.textView_movie_title) as TextView
-        internal var year = view.findViewById<View>(R.id.textView_movie_year) as TextView//su an pasif durumda*cengizhan*
-        internal var description =
-                view.findViewById<View>(R.id.textView_movie_description) as TextView
         internal var categorie =
                 view.findViewById<View>(R.id.textView_movie_categorie) as TextView
 
@@ -26,7 +23,6 @@ class MovieAdapter(private val mainActivity: MainActivity, private val moveList:
         }
 
         override fun onClick(view: View?) {
-            //mainActivity.showMovie(adapterPosition)
             val intentToMoviePager = Intent(view!!.context, MoviePagerActivity::class.java)
             view.context.startActivity(intentToMoviePager)
         }
@@ -45,11 +41,13 @@ class MovieAdapter(private val mainActivity: MainActivity, private val moveList:
 
         val movie = moveList[position]
         holder.title.text = movie.title
-        val substringLength = if(movie.description!!.length <15) movie.description!!.length else 15
-        val shortDesc = "${movie.description!!.substring(0, substringLength)}..."
-        holder.description.text = shortDesc
         when {
             movie.action ->holder.categorie.text = "Action"
+            movie.horror ->holder.categorie.text = "Horror"
+            movie.comedy ->holder.categorie.text = "Comedy"
+            movie.drama ->holder.categorie.text = "Drama"
+            movie.thriller ->holder.categorie.text = "Thriller"
+            movie.western ->holder.categorie.text = "Western"
         }
     }
 

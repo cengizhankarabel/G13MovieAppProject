@@ -30,7 +30,7 @@ class DialogShowMovie : DialogFragment() {
         val textViewThriller = dialogLayout.findViewById<TextView>(R.id.checkBox_thriller)
         val textViewDrama = dialogLayout.findViewById<TextView>(R.id.checkBox_drama)
         val textViewWestern = dialogLayout.findViewById<TextView>(R.id.checkBox_western)
-        val buttonDone = dialogLayout.findViewById<Button>(R.id.button_done)
+
 
 
 
@@ -48,9 +48,6 @@ class DialogShowMovie : DialogFragment() {
         }
 
 
-        buttonDone.setOnClickListener {
-            dismiss()
-        }
 
         builder.setView(dialogLayout)
                 .setMessage("Information of Movie")

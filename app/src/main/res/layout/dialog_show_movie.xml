@@ -23,53 +23,137 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="291dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="80dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/card_margin"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="2dp" />
+
+                <TextView
+                    android:id="@+id/textView_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="70dp"
+                    android:text="1"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_year"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_title" />
+
                 <TextView
                     android:id="@+id/textView_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
                     android:layout_marginTop="16dp"
                     android:text="3"
-                    app:layout_constraintStart_toStartOf="@+id/textView_action"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_action" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_year" />
 
-                <Button
-                    android:id="@+id/button_done"
+                <TextView
+                    android:id="@+id/textView_action"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
-                    android:hint="@string/button_done"
-                    android:textAlignment="gravity"
-                    android:textColorHint="#CE0FEF"
-                    android:textSize="21sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/action_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
-                    app:layout_constraintVertical_bias="0.912" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+                <TextView
+                    android:id="@+id/textView_horror"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/horror_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+
+                <TextView
+                    android:id="@+id/textView_comedy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/comedy_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+                <TextView
+                    android:id="@+id/textView_drama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/drama_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+                <TextView
+                    android:id="@+id/textView_thriller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/thriller_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+                <TextView
+                    android:id="@+id/textView_western"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/western_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+
 
                 <Button
                     android:id="@+id/button_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="50dp"
                     android:hint="@string/button_delete"
                     android:textAlignment="gravity"
                     android:textColorHint="#CE0FEF"
                     android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.313"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
-                    app:layout_constraintVertical_bias="0.568" />
+                    app:layout_constraintEnd_toEndOf="@+id/button_edit"
+                    app:layout_constraintHorizontal_bias="0.437"
+                    app:layout_constraintStart_toStartOf="@+id/button_edit"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_action"
+                    app:layout_constraintVertical_bias="0.791" />
 
                 <Button
                     android:id="@+id/button_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="80dp"
+                    android:layout_marginBottom="50dp"
                     android:hint="@string/button_edit"
                     android:textAlignment="gravity"
                     android:textColorHint="#CE0FEF"
@@ -77,40 +161,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.781"
+                    app:layout_constraintHorizontal_bias="0.528"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_description"
-                    app:layout_constraintVertical_bias="0.568" />
-
-                <TextView
-                    android:id="@+id/textView_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="2"
-                    app:layout_constraintStart_toStartOf="@+id/textView_title"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_title" />
-
-                <TextView
-                    android:id="@+id/textView_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="64dp"
-                    android:layout_marginTop="150dp"
-                    android:text="1"
-                    app:layout_constraintBottom_toTopOf="@+id/textView_year"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/textView_action"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/action_text"
-                    app:layout_constraintStart_toStartOf="@+id/textView_year"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_year" />
+                    app:layout_constraintVertical_bias="0.392" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

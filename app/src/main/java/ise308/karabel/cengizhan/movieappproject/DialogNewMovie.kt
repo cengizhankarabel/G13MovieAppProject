@@ -1,19 +1,22 @@
 package ise308.karabel.cengizhan.movieappproject
 
-import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.*
+import android.widget.Toast
+import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.fragment.app.DialogFragment
-import kotlin.*
 
 
 class DialogNewMovie : DialogFragment() {
+
+
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -41,6 +44,23 @@ class DialogNewMovie : DialogFragment() {
         val imageView = dialogLayout.findViewById<ImageView>(R.id.imageView)
 
 
+      /*  imageView.setOnClickListener{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                        PackageManager.PERMISSION_DENIED){
+                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permissions, PERMISSION_CODE)
+                }
+                else{
+                    pickImageFromGallery()
+                }
+            }
+            else {
+                pickImageFromGallery()
+            }
+
+        }*/
+
 
 
 
@@ -65,21 +85,6 @@ class DialogNewMovie : DialogFragment() {
 
 
 
-        imageView.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                        PackageManager.PERMISSION_DENIED
-                ) {
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(permissions, PERMISSION_CODE);
-                } else {
-                    pickImageFromGallery();
-                }
-            } else {
-                pickImageFromGallery();
-            }
-        }
-
 
 
         buttonOk.setOnClickListener {
@@ -90,9 +95,10 @@ class DialogNewMovie : DialogFragment() {
             newMovie.action = checkBoxAction.isChecked
             newMovie.horror = checkBoxHorror.isChecked
             newMovie.comedy = checkBoxComedy.isChecked
-            newMovie.drama = checkBoxThriller.isChecked
-            newMovie.thriller = checkBoxDrama.isChecked
+            newMovie.drama = checkBoxDrama.isChecked
+            newMovie.thriller = checkBoxThriller.isChecked
             newMovie.western = checkBoxWestern.isChecked
+            //newMovie.imageOfMovie = imageView.setImageBitmap()
 
 
             count += 1
@@ -106,63 +112,63 @@ class DialogNewMovie : DialogFragment() {
         }
 
 
-
-
-
-
-
-
         return builder.create()
 
 
     }
-    private fun checkSelfPermission(externalStorage: String): Int {
-        return -1
-    }
-
 
     private fun pickImageFromGallery() {
+
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_PICK_CODE)
+
     }
+
 
     companion object {
         private const val IMAGE_PICK_CODE = 1000
         private const val PERMISSION_CODE = 1001
     }
 
-
-
-
-    override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
-    ) {
-        when (requestCode) {
+   /* override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode){
             PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImageFromGallery()
-                } else {
-                    Toast.makeText(activity, "Permission denied", Toast.LENGTH_SHORT).show()
+                if(grantResults.isNotEmpty() && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
+               pickImageFromGallery()
+                }
+                else{
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
-    }
-    /*override fun onActivitycResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            imageView.setImageURI(data?.data)
-
-        }
     }*/
 
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            imageV.setImageURI(data?.data)
+
+
+
+        }*/
+    }
 
 
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
