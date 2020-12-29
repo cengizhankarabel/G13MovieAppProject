@@ -68,8 +68,25 @@ class Movie {
 
     }
 
-    constructor() {
 
+    constructor(){
+
+    }
+
+    constructor( id: Int, listNumber: Int, title: String, year: String, description: String,
+        action: Boolean, horror: Boolean, comedy: Boolean, drama: Boolean, thriller: Boolean, western: Boolean)
+    {
+        this.id = id
+        this.listNumber =listNumber
+        this.title=title
+        this.year = year
+        this.description = description
+        this.action = action
+        this.horror = horror
+        this.comedy = comedy
+        this.drama = drama
+        this.thriller = thriller
+        this.western = western
     }
 
     @Throws(JSONException::class)

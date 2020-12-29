@@ -13,5 +13,6 @@ class ListMovie : Fragment() {
         //sayfalar arası geçiş sağlamak için kullandığımız class
 
         return inflater.inflate(R.layout.activity_movie_pager, container, false)
+
     }
 }

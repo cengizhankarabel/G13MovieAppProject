@@ -26,7 +26,7 @@ class FragmentDeleteMovie: Fragment() {
 
         //Toast.makeText(activity, "TEST DELETE PAGE.", Toast.LENGTH_SHORT).show()
 
-        val findNumber = view.findViewById<View>(R.id.list_number_layout) as TextView
+        val findNumber = view.findViewById<TextView>(R.id.list_number_layout)
         val deleteButton = view.findViewById<Button>(R.id.button_delete_layout)
 
         jsonSerializer = context?.let { JSONSerializer("MyMovieList",  it.applicationContext) }
@@ -49,20 +49,23 @@ class FragmentDeleteMovie: Fragment() {
             {
                 if (i.listNumber.toString() == findNumber.text.toString()) {
 
-                    Toast.makeText(activity, "TEST SILME ISLEMI BASARILI ${i.title}  ${findNumber.text}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "TEST SILME ISLEMI BASARILI ${i.listNumber}  ${findNumber.text}  ${i.title}", Toast.LENGTH_SHORT).show()
 
-                    i.title = "Cengizhan"
+                    i.title = "salime"
+                    Toast.makeText(activity, "TEST SILME ISLEMI BASARILI  ${i.listNumber} ${i.title}", Toast.LENGTH_SHORT).show()
+
                     findNumber.text =" "
 
                     val callActivity = activity as MainActivity
                     callActivity.saveMovie()
 
+                    Toast.makeText(activity, "TEST SILME ISLEMI BASARILI ${i.listNumber} ${i.title}", Toast.LENGTH_SHORT).show()
 
                     break
 
                 }
                 else{
-                    Toast.makeText(activity, "TEST SILME ISLEMI BASARISIZ  ${i.title}", android.widget.Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "TEST SILME ISLEMI BASARISIZ  ${i.listNumber}", android.widget.Toast.LENGTH_SHORT).show()
                 }
 
             }

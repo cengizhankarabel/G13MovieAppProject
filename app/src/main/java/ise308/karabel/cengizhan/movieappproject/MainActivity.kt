@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(),
 
     private lateinit var drawerLayout : DrawerLayout
 
-    var movieList: ArrayList<Movie>? = null
+    private var movieList: ArrayList<Movie>? = null
     private var jsonSerializer: JSONSerializer? = null
 
     private var recyclerView: RecyclerView? = null
@@ -53,12 +53,11 @@ class MainActivity : AppCompatActivity(),
 
         val actionBarDrawer = ActionBarDrawerToggle(
                 this,
-                drawerLayout,
-                toolbar,
+                drawerLayout, toolbar,
 
                 R.string.drawer_movie_open,
-                R.string.drawer_movie_close
-        )
+                R.string.drawer_movie_close)
+
         drawerLayout.addDrawerListener(actionBarDrawer)
         actionBarDrawer.syncState()
 
@@ -77,7 +76,7 @@ class MainActivity : AppCompatActivity(),
         // supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
 
 
-
+        initializeMovie()
 
         recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
         adapter = MovieAdapter(movieList!!)
@@ -87,7 +86,22 @@ class MainActivity : AppCompatActivity(),
         recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         recyclerView!!.adapter = adapter
 
+
     }//override onCreate bitis
+
+
+
+    private fun initializeMovie(){
+
+        movieList = ArrayList<Movie>()
+        movieList!!.add(Movie(1000001,1,"Inception","2010","use of dream-sharing technology",true,false,false,false,false,false))
+        movieList!!.add(Movie(1000002,2,"Forest Gump","1994","American romantic comedy-drama filmy",false,false,false,true,false,false))
+        movieList!!.add(Movie(1000003,3,"Green Street Hooligans","2010","football hooliganism",false,false,false,true,false,false))
+        movieList!!.add(Movie(1000004,4,"The Godfather","1972","Marlon Brando, Al Pacino, James Caan ",false,false,false,true,false,false))
+        movieList!!.add(Movie(1000005,5," The Green Mile","1999","child murder and rape",false,false,false,false,true,false))
+        movieList!!.add(Movie(1000006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
+
+    }
 
 
     override fun onResume() {

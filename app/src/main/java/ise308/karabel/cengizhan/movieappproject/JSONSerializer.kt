@@ -8,8 +8,6 @@ import java.io.*
 
 class JSONSerializer (private val filename : String, private  val context: Context) {
 
-
-
     @Throws(IOException::class, JSONException::class)
     fun save(movieList: List<Movie>){
         val jsonArray = JSONArray()
