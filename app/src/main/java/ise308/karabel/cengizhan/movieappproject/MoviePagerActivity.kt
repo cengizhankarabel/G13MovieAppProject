@@ -2,20 +2,18 @@ package ise308.karabel.cengizhan.movieappproject
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import ise308.karabel.cengizhan.movieappproject.JSONSerializer
+
 
 private const val TAG = "MoviePagerActivity" //for log
 private var movieList: ArrayList<Movie>? = null
 private var jsonSerializer : JSONSerializer? =null
 
-
-class MoviePagerActivity : AppCompatActivity() {
+class MoviePagerActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +30,7 @@ class MoviePagerActivity : AppCompatActivity() {
 
         var movieFragmentList = java.util.ArrayList<Fragment>()
         for(movie in movieList!!){
-            movieFragmentList.add(ShowMovieFragment.newInstance(movie))
+            movieFragmentList.add(FragmentShowMovie.newInstance(movie))
         }
 
         val moviePageAdapter = MoviePagerAdapter(supportFragmentManager, movieFragmentList)
@@ -40,7 +38,7 @@ class MoviePagerActivity : AppCompatActivity() {
     }
 
     class MoviePagerAdapter(fm: FragmentManager, private val movieFragmentList: ArrayList<Fragment>)
-        : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+        : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
         override fun getCount() = movieFragmentList.size
 
 

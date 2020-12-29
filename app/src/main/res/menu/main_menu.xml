@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/settings"
-        android:title="Settings"
-        app:showAsAction="never"/>
+    <group
+        android:id="@+id/group13"
+        android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/list_movies"
+            android:icon="@drawable/list_movie_icon"
+            android:title="@string/my_movie_list" />
+        <item
+            android:id="@+id/add_movie"
+            android:icon="@drawable/add_photo_icon"
+            android:title="@string/add_new_movie" />
+
+        <item
+            android:id="@+id/delete_movie"
+            android:icon="@drawable/delete_movie_icon"
+            android:title="@string/delete_movie" />
+
+        <item
+            android:id="@+id/update_movie"
+            android:icon="@drawable/update_movie_icon"
+            android:title="@string/update_movie" />
+
+
+
+    </group>
+
+
+
+
 </menu>

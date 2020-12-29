@@ -7,15 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MovieAdapter(private val moveList: List<Movie>)
-    : RecyclerView.Adapter<MovieAdapter.ListItemHolder>(){
 
-    inner class ListItemHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+class MovieAdapter(private val movieList: ArrayList<Movie>)
+    : RecyclerView.Adapter<MovieAdapter.ListItemHolder>() {
+
+
+    inner class ListItemHolder(view: View) :
+            RecyclerView.ViewHolder(view), View.OnClickListener{
+
 
 
         internal var title = view.findViewById<View>(R.id.textView_movie_title) as TextView
-        internal var categorie =
-                view.findViewById<View>(R.id.textView_movie_categorie) as TextView
+        internal var category = view.findViewById<View>(R.id.textView_movie_category) as TextView
+        internal var listNumber = view.findViewById<View>(R.id.list_number) as TextView
 
         init {
             view.isClickable = true
@@ -23,42 +27,41 @@ class MovieAdapter(private val moveList: List<Movie>)
         }
 
         override fun onClick(view: View?) {
+
             val intentToMoviePager = Intent(view!!.context, MoviePagerActivity::class.java)
             view.context.startActivity(intentToMoviePager)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemHolder {
-        val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_movie, parent, false)
-        return ListItemHolder(itemView)
-
+        val newRow = LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_movie_card_view, parent, false)
+        return ListItemHolder(newRow)
     }
 
     override fun onBindViewHolder(holder: ListItemHolder, position: Int) {
 
-
-
-        val movie = moveList[position]
+        val movie = movieList[position]
         holder.title.text = movie.title
-        when {
-            movie.action ->holder.categorie.text = "Action"
-            movie.horror ->holder.categorie.text = "Horror"
-            movie.comedy ->holder.categorie.text = "Comedy"
-            movie.drama ->holder.categorie.text = "Drama"
-            movie.thriller ->holder.categorie.text = "Thriller"
-            movie.western ->holder.categorie.text = "Western"
+
+        holder.listNumber.text = movie.listNumber.toString()
+        when{
+            movie.action ->holder.category.text = "Action"
+            movie.horror ->holder.category.text = "Horror"
+            movie.comedy ->holder.category.text = "Comedy"
+            movie.drama ->holder.category.text = "Drama"
+            movie.thriller ->holder.category.text = "Thriller"
+            movie.western ->holder.category.text = "Western"
         }
     }
 
-
     override fun getItemCount(): Int {
-        if (moveList != null){
-            return moveList.size
+        if (movieList != null){
+            return movieList.size
         }
         return -1
     }
-
 
 
 }

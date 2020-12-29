@@ -23,14 +23,17 @@ private val JSON_DRAMA = "drama"
 private val JSON_THRILLER = "thriller"
 private val JSON_WESTERN = "western"
 private val JSON_COUNT = "count"
-private val JSON_IMAGE = "image"
+private val JSON_ID = "id"
+private val JSON_LIST = "list"
 
 
 
-var count: Int = 0  //arraydeki film sayısını tutmak icin
+var count: Int = 0
 class Movie {
 
 
+    var id: Int = 100000
+    var listNumber: Int = 1
     var title: String? = null
     var description: String? = null
     var year: String? = null
@@ -40,8 +43,6 @@ class Movie {
     var drama: Boolean = false
     var thriller: Boolean = false
     var western: Boolean = false
-    lateinit var imageOfMovie : ImageView  //bunu öğrenmemiz gerekiyor
-
 
 
 
@@ -58,15 +59,16 @@ class Movie {
         thriller = jsonObject.getBoolean(JSON_THRILLER)
         western = jsonObject.getBoolean(JSON_WESTERN)
 
+        id = jsonObject.getInt(JSON_ID)
+        listNumber = jsonObject.getInt(JSON_LIST)
+        count = jsonObject.getInt(JSON_COUNT)
 
 
 
-        jsonObject.put(JSON_COUNT,count)
-        count+=1
 
     }
 
-    constructor(){
+    constructor() {
 
     }
 
@@ -82,16 +84,16 @@ class Movie {
         jsonObject.put(JSON_DRAMA, drama)
         jsonObject.put(JSON_THRILLER, thriller)
         jsonObject.put(JSON_WESTERN, western)
-
-
         jsonObject.put(JSON_COUNT,count)
+        jsonObject.put(JSON_ID,id)
+        jsonObject.put(JSON_LIST,listNumber)
+
 
 
 
         return jsonObject
+
     }
-
-
 
 
 }

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_out_color"
@@ -27,14 +27,15 @@
                     android:id="@+id/cardView"
                     android:layout_width="291dp"
                     android:layout_height="180dp"
-                    android:layout_marginTop="80dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/card_margin"
+                    android:layout_marginTop="80dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="2dp" />
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_title"

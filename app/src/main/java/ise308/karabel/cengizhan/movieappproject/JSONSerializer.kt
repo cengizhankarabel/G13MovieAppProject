@@ -7,6 +7,9 @@ import org.json.JSONTokener
 import java.io.*
 
 class JSONSerializer (private val filename : String, private  val context: Context) {
+
+
+
     @Throws(IOException::class, JSONException::class)
     fun save(movieList: List<Movie>){
         val jsonArray = JSONArray()
@@ -55,4 +58,5 @@ class JSONSerializer (private val filename : String, private  val context: Conte
         }
         return movieList
     }
+
 }

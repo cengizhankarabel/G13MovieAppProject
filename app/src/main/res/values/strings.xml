@@ -2,7 +2,20 @@
     <string name="app_name">MovieAppProject</string>
 
 
-    //new_movie_layout
+    <string name="my_movie_list">My Movies List</string>
+    <string name="delete_movie">Delete Movie</string>
+    <string name="update_movie">Update Movie</string>
+
+    <string name="settings">Settings</string>
+    <string name="menu_bar_name">Movie List</string>
+    <string name="drawer_movie_open">Open Movie</string>
+    <string name="drawer_movie_close">Close Movie</string>
+    <string name="delete_text">Enter MOVIE List Number</string>
+    <string name="update_text">Enter MOVIE Name</string>
+    <string name="show_movie_information">Show</string>
+    <string name="update_movie_information">Update</string>
+
+
     <string name="title_hint">Title</string>
     <string name="description_hint">Description</string>
     <string name="year_hint">Year</string>
@@ -23,5 +36,5 @@
     <string name="count_hint">Count</string>
     <string name="add_new_movie">Add a New Movie</string>
     <string name="add_first_movie">"Add first Movie"</string>
-
+    <string name="title_activity_movie_new">MovieNewActivity</string>
 </resources>
