@@ -94,12 +94,12 @@ class MainActivity : AppCompatActivity(),
     private fun initializeMovie(){
 
         movieList = ArrayList<Movie>()
-        movieList!!.add(Movie(1000001,1,"Inception","2010","use of dream-sharing technology",true,false,false,false,false,false))
-        movieList!!.add(Movie(1000002,2,"Forest Gump","1994","American romantic comedy-drama filmy",false,false,false,true,false,false))
-        movieList!!.add(Movie(1000003,3,"Green Street Hooligans","2010","football hooliganism",false,false,false,true,false,false))
-        movieList!!.add(Movie(1000004,4,"The Godfather","1972","Marlon Brando, Al Pacino, James Caan ",false,false,false,true,false,false))
-        movieList!!.add(Movie(1000005,5," The Green Mile","1999","child murder and rape",false,false,false,false,true,false))
-        movieList!!.add(Movie(1000006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
+        movieList!!.add(Movie(100001,1,"Inception","2010","use of dream-sharing technology",true,false,false,false,false,false))
+        movieList!!.add(Movie(100002,2,"Forest Gump","1994","American romantic comedy-drama filmy",false,false,false,true,false,false))
+        movieList!!.add(Movie(100003,3,"Green Street Hooligans","2010","football hooliganism",false,false,false,true,false,false))
+        movieList!!.add(Movie(100004,4,"The Godfather","1972","Marlon Brando, Al Pacino, James Caan ",false,false,false,true,false,false))
+        movieList!!.add(Movie(100005,5," The Green Mile","1999","child murder and rape",false,false,false,false,true,false))
+        movieList!!.add(Movie(100006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
 
     }
 

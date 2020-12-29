@@ -28,7 +28,7 @@ private val JSON_LIST = "list"
 
 
 
-var count: Int = 0
+var count: Int = 6
 class Movie {
 
 

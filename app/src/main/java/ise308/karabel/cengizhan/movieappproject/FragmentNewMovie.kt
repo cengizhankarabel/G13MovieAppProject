@@ -73,6 +73,7 @@ class FragmentNewMovie : Fragment() {
 
             count +=1
 
+
             val newMovie = Movie()
             newMovie.title = editTitle.text.toString()
             newMovie.year = editYear.text.toString()
