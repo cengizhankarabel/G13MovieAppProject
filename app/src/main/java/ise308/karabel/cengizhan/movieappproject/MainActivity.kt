@@ -197,7 +197,6 @@ class MainActivity : AppCompatActivity(),
 
         supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, ListMovie()).commit()
 
-        //Toast.makeText(this, "TEST HIDE FUNCTION.", Toast.LENGTH_SHORT).show()
 
 
 
