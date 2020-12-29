@@ -32,6 +32,7 @@ class FragmentShowMovie  : Fragment() {
         val buttonDelete = view.findViewById<Button>(R.id.button_delete)
 
 
+
         buttonEdit.setOnClickListener {
 
             val callActivity = activity as MainActivity

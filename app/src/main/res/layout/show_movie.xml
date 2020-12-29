@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayoutMenu6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -53,11 +51,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="56dp"
                     android:layout_marginTop="70dp"
-                    android:text="1"
                     app:layout_constraintBottom_toTopOf="@+id/textView_year"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_year"
@@ -65,9 +63,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="56dp"
                     android:layout_marginTop="16dp"
-                    android:text="2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_title"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_description"
@@ -75,9 +73,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="56dp"
                     android:layout_marginTop="16dp"
-                    android:text="3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_year" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_year"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_action"
@@ -87,7 +85,8 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/action_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_horror"
@@ -97,7 +96,8 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/horror_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
+                    android:layout_marginLeft="56dp" />
 
 
                 <TextView
@@ -108,7 +108,8 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/comedy_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_drama"
@@ -118,7 +119,8 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/drama_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_thriller"
@@ -128,7 +130,8 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/thriller_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
+                    android:layout_marginLeft="56dp" />
 
                 <TextView
                     android:id="@+id/textView_western"
@@ -138,7 +141,8 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/western_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description"
+                    android:layout_marginLeft="56dp" />
 
 
 

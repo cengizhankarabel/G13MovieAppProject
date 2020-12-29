@@ -28,6 +28,8 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener {
 
+
+
     private lateinit var drawerLayout : DrawerLayout
 
     private var movieList: ArrayList<Movie>? = null
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initializeMovie()
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -76,7 +79,7 @@ class MainActivity : AppCompatActivity(),
         // supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
 
 
-        initializeMovie()
+
 
         recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
         adapter = MovieAdapter(movieList!!)
@@ -87,9 +90,14 @@ class MainActivity : AppCompatActivity(),
         recyclerView!!.adapter = adapter
 
 
+
+
+
+
+
+
+
     }//override onCreate bitis
-
-
 
     private fun initializeMovie(){
 
@@ -102,6 +110,10 @@ class MainActivity : AppCompatActivity(),
         movieList!!.add(Movie(100006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
 
     }
+
+
+
+
 
 
     override fun onResume() {

@@ -41,7 +41,8 @@
                     android:hint="@string/title_hint"
                     android:inputType="textPersonName"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="8dp" />
 
                 <EditText
                     android:id="@+id/edit_year"
