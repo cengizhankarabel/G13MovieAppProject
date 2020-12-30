@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 private const val TAG = "FragmentShowMovie" //for log
 class FragmentShowMovie  : Fragment() {
@@ -34,16 +35,17 @@ class FragmentShowMovie  : Fragment() {
 
 
         buttonEdit.setOnClickListener {
+            //FragmentManager manager = getActivity().getSupportFragmentManager();
 
             val callActivity = activity as MainActivity
-            callActivity.supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentUpdateMovie()).commit()
+            callActivity.supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_left_to_right, R.anim.enter_right_to_left).replace(R.id.fragmentSlides, FragmentUpdateMovie()).commit()
         }
 
 
         buttonDelete.setOnClickListener {
 
             val callActivity = activity as MainActivity
-            callActivity.supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentDeleteMovie()).commit()
+            callActivity.supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_left_to_right, R.anim.enter_right_to_left).replace(R.id.fragmentSlides, FragmentDeleteMovie()).commit()
 
         }
 
