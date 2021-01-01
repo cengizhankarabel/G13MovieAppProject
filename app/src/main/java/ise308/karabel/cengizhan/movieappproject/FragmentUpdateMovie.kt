@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import org.json.JSONObject
 
 
 private const val TAG = "FragmentUpdateMovie" //for log
@@ -65,6 +66,14 @@ class FragmentUpdateMovie : Fragment() {
                     i.description = updateDescription.text.toString()
 
                     Toast.makeText(activity, "UPDATE ISLEMI BASARILI ${i.title}  ${updateFindMovie.text}", Toast.LENGTH_SHORT).show()
+
+
+                  //  var js = JSONObject()
+
+                    val callActivity = activity as MainActivity
+                    callActivity.createNewMovie(i)
+                    callActivity.saveMovie()
+
 
                     break
                 }

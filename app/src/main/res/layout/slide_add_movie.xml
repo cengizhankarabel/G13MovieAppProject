@@ -17,7 +17,7 @@
         android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_out_color"
+        android:background="@color/white"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -36,13 +36,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:hint="@string/title_hint"
                     android:inputType="textPersonName"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginLeft="8dp" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/edit_year"
@@ -154,7 +154,7 @@
                     app:layout_constraintVertical_bias="0.118" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageViewAdd"
                     android:layout_width="63dp"
                     android:layout_height="67dp"
                     android:layout_marginStart="16dp"

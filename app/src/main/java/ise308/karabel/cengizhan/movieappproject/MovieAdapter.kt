@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -20,14 +21,14 @@ class MovieAdapter(private val movieList: ArrayList<Movie>)
         internal var title = view.findViewById<View>(R.id.textView_movie_title) as TextView
         internal var category = view.findViewById<View>(R.id.textView_movie_category) as TextView
         internal var listNumber = view.findViewById<View>(R.id.list_number) as TextView
+        internal var imgView = view.findViewById<ImageView>(R.id.img)
 
         init {
             view.isClickable = true
             view.setOnClickListener(this)
         }
 
-        override fun onClick(view: View?) {
-
+       override fun onClick(view: View?) {
             val intentToMoviePager = Intent(view!!.context, MoviePagerActivity::class.java)
             view.context.startActivity(intentToMoviePager)
         }
@@ -44,6 +45,7 @@ class MovieAdapter(private val movieList: ArrayList<Movie>)
 
         val movie = movieList[position]
         holder.title.text = movie.title
+        holder.imgView.setImageURI(movie.image)
 
         holder.listNumber.text = movie.listNumber.toString()
         when{

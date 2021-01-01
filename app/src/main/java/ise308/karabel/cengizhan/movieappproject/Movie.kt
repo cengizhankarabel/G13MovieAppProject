@@ -1,11 +1,6 @@
 package ise308.karabel.cengizhan.movieappproject
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.media.Image
-import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
+import android.net.Uri
 import androidx.fragment.app.DialogFragment
 import org.json.JSONArray
 import org.json.JSONException
@@ -25,6 +20,8 @@ private val JSON_WESTERN = "western"
 private val JSON_COUNT = "count"
 private val JSON_ID = "id"
 private val JSON_LIST = "list"
+private val JSON_IMAGE = "image"
+
 
 
 
@@ -35,8 +32,9 @@ class Movie {
     var id: Int = 100000
     var listNumber: Int = 1
     var title: String? = null
-    var description: String? = null
     var year: String? = null
+    var description: String? = null
+    var image: Uri? = null
     var action: Boolean = false
     var horror: Boolean = false
     var comedy: Boolean = false
@@ -73,13 +71,14 @@ class Movie {
 
     }
 
-    constructor( id: Int, listNumber: Int, title: String, year: String, description: String,
-        action: Boolean, horror: Boolean, comedy: Boolean, drama: Boolean, thriller: Boolean, western: Boolean)
+    constructor(id: Int, listNumber: Int, title: String, year: String, /*image: Uri,*/ description: String,
+                action: Boolean, horror: Boolean, comedy: Boolean, drama: Boolean, thriller: Boolean, western: Boolean)
     {
         this.id = id
         this.listNumber =listNumber
         this.title=title
         this.year = year
+        this.image = image
         this.description = description
         this.action = action
         this.horror = horror
@@ -87,6 +86,7 @@ class Movie {
         this.drama = drama
         this.thriller = thriller
         this.western = western
+
     }
 
     @Throws(JSONException::class)
@@ -104,6 +104,7 @@ class Movie {
         jsonObject.put(JSON_COUNT,count)
         jsonObject.put(JSON_ID,id)
         jsonObject.put(JSON_LIST,listNumber)
+        jsonObject.put(JSON_IMAGE, image)
 
 
 

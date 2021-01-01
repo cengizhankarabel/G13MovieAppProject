@@ -1,15 +1,21 @@
 package ise308.karabel.cengizhan.movieappproject
 
+import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 private const val TAG = "FragmentShowMovie" //for log
 class FragmentShowMovie  : Fragment() {
+
+    private var imageUri: Uri? = null
+    private lateinit var imgView: ImageView
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -18,6 +24,8 @@ class FragmentShowMovie  : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.show_movie, container, false)
+
+
 
         val textViewTitle = view.findViewById<TextView>(R.id.textView_title)
         val textViewYear = view.findViewById<TextView>(R.id.textView_year)
@@ -30,12 +38,13 @@ class FragmentShowMovie  : Fragment() {
         val textViewWestern = view.findViewById<TextView>(R.id.textView_western)
         val buttonEdit = view.findViewById<Button>(R.id.button_edit)
         val buttonDelete = view.findViewById<Button>(R.id.button_delete)
+        imgView = view.findViewById(R.id.img) as ImageView
 
 
 
         buttonEdit.setOnClickListener {
 
-            val callActivity = activity as MainActivity
+           val callActivity = activity as MainActivity
             callActivity.supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentUpdateMovie()).commit()
         }
 
@@ -48,14 +57,14 @@ class FragmentShowMovie  : Fragment() {
         }
 
 
-        //   val layoutCont = view.findViewById<ImageView>(R.id.imageView)
-        //  val anaekran = view.findViewById<ImageView>(R.id.imageView3)
+
         textViewTitle.text = arguments!!.getString("Title")
         textViewYear.text = arguments!!.getString("Year")
         textViewDescription.text = arguments!!.getString("Description")
+      //  imgView.setImageURI(imageUri) = arguments!!.get("image")
 
 
-        // if(!arguments!!("Image")) layoutCont.visibility = View.GONE
+
         if(!arguments!!.getBoolean("Action")) textViewAction.visibility = View.GONE
         if(!arguments!!.getBoolean("Horror")) textViewHorror.visibility = View.GONE
         if(!arguments!!.getBoolean("Comedy")) textViewComedy.visibility = View.GONE
@@ -82,6 +91,9 @@ class FragmentShowMovie  : Fragment() {
             bundle.putBoolean("Thriller",movie.thriller)
             bundle.putBoolean("Drama",movie.drama)
             bundle.putBoolean("Western",movie.western)
+           // bundle.("image",movie.image)
+
+
             fragment.arguments = bundle
             return fragment
 

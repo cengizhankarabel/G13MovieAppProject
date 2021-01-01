@@ -2,35 +2,39 @@ package ise308.karabel.cengizhan.movieappproject
 
 import android.Manifest
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
+import kotlin.concurrent.timer
 
 private const val TAG = "FragmentNewMovie" //for log
 class FragmentNewMovie : Fragment() {
 
-    //private static final int IMAGE_PICK_CODE = 1000
-    //private static final int PERMISSION_CODE = 1001
+    private lateinit var imgView: ImageView
+    private var imageUri: Uri? = null
+    private val imagePickCode = 100
 
 
-
-    @Override
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
 
-        val IMAGE_PICK_CODE = 1000
-        val PERMISSION_CODE = 1001
+
 
 
         val view = inflater.inflate(R.layout.slide_add_movie, container, false)
@@ -48,11 +52,7 @@ class FragmentNewMovie : Fragment() {
         val buttonOk = view.findViewById<Button>(R.id.button_ok)
         val buttonCancel = view.findViewById<Button>(R.id.button_cancel)
 
-        val imgView = view.findViewById<ImageView>(R.id.imageView)
-        var updateImg = view.findViewById<ImageView>(R.id.imageView3)
-
-
-
+        imgView = view.findViewById(R.id.imageViewAdd) as ImageView
 
 
 
@@ -61,37 +61,16 @@ class FragmentNewMovie : Fragment() {
             val callActivity = activity as MainActivity
             callActivity.hideFragment()
 
-
             //Toast.makeText(activity, "TEST CANCEL BUTTON.", Toast.LENGTH_SHORT).show()
         }
 
-        imgView.setOnClickListener(View.OnClickListener {
-                //check runtime permission
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (activity?.let { it1 ->
-                                checkSelfPermission(it1,
-                                        Manifest.permission.READ_EXTERNAL_STORAGE)
-                            }
-                            == PackageManager.PERMISSION_GRANTED) {
-                        //permission not granted, request it.
-                          val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        //show popup for runtime permission
-                        requestPermissions(permissions, PERMISSION_CODE)
-                    } else {
-                        //permission already granted
-                        pickImageFromGallery()
-                    }
-                } else {
-                    //system os is less then marshmallow
-                    pickImageFromGallery()
-                }
-        })
+        imgView.setOnClickListener(){
+
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(intent, imagePickCode)
 
 
-
-
-
-
+        }
 
         buttonOk.setOnClickListener {
 
@@ -99,6 +78,7 @@ class FragmentNewMovie : Fragment() {
 
 
             val newMovie = Movie()
+
             newMovie.title = editTitle.text.toString()
             newMovie.year = editYear.text.toString()
             newMovie.description = editDescription.text.toString()
@@ -110,10 +90,7 @@ class FragmentNewMovie : Fragment() {
             newMovie.western = checkBoxWestern.isChecked
             newMovie.id += count
             newMovie.listNumber = count
-            //updateImg = imgView
-
-
-
+            newMovie.image = imageUri
 
 
             val callActivity = activity as MainActivity
@@ -130,42 +107,15 @@ class FragmentNewMovie : Fragment() {
     }
 
 
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = ("image/*")
-        startActivityForResult(intent, IMAGE_PICK_CODE)
-    }
 
-    companion object {
-        private const val IMAGE_PICK_CODE = 1000
-        private const val PERMISSION_CODE = 1001
-
-
-    }
-
-
-    @Override
-    override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
-    ) {
-        when (requestCode) {
-            PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImageFromGallery()
-                } else {
-                    Toast.makeText(activity, "Permission denied", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
-    }
-
-    @Override
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            view?.findViewById<ImageView>(R.id.imageView)?.setImageURI(data?.data)
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == imagePickCode) {
+
+            //view?.findViewById<ImageView>(R.id.imageView)?.setImageURI(data?.data)
+            imageUri = data?.data
+            imageUri.toString()
+            imgView.setImageURI(imageUri)
 
         }
     }

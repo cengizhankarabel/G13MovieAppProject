@@ -5,6 +5,7 @@
     <string name="my_movie_list">My Movies List</string>
     <string name="delete_movie">Delete Movie</string>
     <string name="update_movie">Update Movie</string>
+    <string name="show_movie">Show Movie</string>
 
     <string name="settings">Settings</string>
     <string name="menu_bar_name">Movie List</string>

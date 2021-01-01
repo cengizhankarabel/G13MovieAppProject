@@ -51,13 +51,17 @@ class FragmentDeleteMovie: Fragment() {
 
                     Toast.makeText(activity, "TEST SILME ISLEMI BASARILI ${i.listNumber}  ${findNumber.text}  ${i.title}", Toast.LENGTH_SHORT).show()
 
-                    i.title = "salime"
+                    i.title = "cengizhan"
                     Toast.makeText(activity, "TEST SILME ISLEMI BASARILI  ${i.listNumber} ${i.title}", Toast.LENGTH_SHORT).show()
 
                     findNumber.text =" "
 
                     val callActivity = activity as MainActivity
+
+                    callActivity.createNewMovie(i)
                     callActivity.saveMovie()
+
+
 
                     Toast.makeText(activity, "TEST SILME ISLEMI BASARILI ${i.listNumber} ${i.title}", Toast.LENGTH_SHORT).show()
 

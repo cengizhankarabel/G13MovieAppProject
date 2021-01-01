@@ -18,7 +18,7 @@
         android:id="@+id/linear_layout_update"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_out_color"
+        android:background="@color/white"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -41,10 +41,10 @@
                     android:ems="10"
                     android:hint="@string/title_hint"
                     android:inputType="textPersonName"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="invisible"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/update_year"
@@ -54,9 +54,9 @@
                     android:ems="10"
                     android:hint="@string/year_hint"
                     android:inputType="textPersonName"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="@+id/update_title"
-                    app:layout_constraintTop_toBottomOf="@+id/update_title"
-                    android:visibility="invisible"/>
+                    app:layout_constraintTop_toBottomOf="@+id/update_title" />
 
                 <EditText
                     android:id="@+id/update_description"
@@ -66,9 +66,9 @@
                     android:ems="10"
                     android:hint="@string/description_hint"
                     android:inputType="textPersonName"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="@+id/update_year"
-                    app:layout_constraintTop_toBottomOf="@+id/update_year"
-                    android:visibility="invisible"/>
+                    app:layout_constraintTop_toBottomOf="@+id/update_year" />
 
                 <EditText
                     android:id="@+id/update_movie_layout"

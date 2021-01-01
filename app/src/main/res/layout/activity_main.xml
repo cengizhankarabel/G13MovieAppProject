@@ -31,14 +31,13 @@
             android:id="@+id/fragmentSlides"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/main_color">
+            android:background="@color/cardview_light_background">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent" />
 
-            </androidx.recyclerview.widget.RecyclerView>
         </FrameLayout>
 
     </LinearLayout>
@@ -50,4 +49,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/banner_for_menu"
         app:menu="@menu/main_menu" />
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

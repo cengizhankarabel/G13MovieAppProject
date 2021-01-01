@@ -1,11 +1,8 @@
 package ise308.karabel.cengizhan.movieappproject
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -13,14 +10,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 
 
@@ -44,7 +37,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initializeMovie()
+
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -66,48 +59,44 @@ class MainActivity : AppCompatActivity(),
 
 
 
-        jsonSerializer = JSONSerializer("MyMovieList", applicationContext)
+         jsonSerializer = JSONSerializer("MyMovieList", applicationContext)
 
-        try {
-            movieList = jsonSerializer!!.load()
-            //Toast.makeText(this, "TEST LIST LOADING", Toast.LENGTH_SHORT).show()
-        } catch (e: Exception) {
-            movieList = ArrayList()
-            Log.e(TAG, "Error loading movie information...")
-        }
+         try {
+             movieList = jsonSerializer!!.load()
+             //Toast.makeText(this, "TEST LIST LOADING", Toast.LENGTH_SHORT).show()
+         } catch (e: Exception) {
+             movieList = ArrayList()
+             Log.e(TAG, "Error loading movie information...")
+         }
 
-        // supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
-
-
-
-
-        recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
-        adapter = MovieAdapter(movieList!!)
-        val layoutManager = LinearLayoutManager(applicationContext)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.itemAnimator = DefaultItemAnimator()
-        recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
-        recyclerView!!.adapter = adapter
+         // supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
 
 
 
 
+         recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
+         adapter = MovieAdapter(movieList!!)
+         val layoutManager = LinearLayoutManager(applicationContext)
+         recyclerView!!.layoutManager = layoutManager
+         recyclerView!!.itemAnimator = DefaultItemAnimator()
+         recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+         recyclerView!!.adapter = adapter
+
+      //  initializeMovie()
 
 
+     }//override onCreate bitis"
 
 
+         private fun initializeMovie(){
 
-    }//override onCreate bitis
-
-    private fun initializeMovie(){
-
-        movieList = ArrayList<Movie>()
-        movieList!!.add(Movie(100001,1,"Inception","2010","use of dream-sharing technology",true,false,false,false,false,false))
-        movieList!!.add(Movie(100002,2,"Forest Gump","1994","American romantic comedy-drama filmy",false,false,false,true,false,false))
-        movieList!!.add(Movie(100003,3,"Green Street Hooligans","2010","football hooliganism",false,false,false,true,false,false))
-        movieList!!.add(Movie(100004,4,"The Godfather","1972","Marlon Brando, Al Pacino, James Caan ",false,false,false,true,false,false))
-        movieList!!.add(Movie(100005,5," The Green Mile","1999","child murder and rape",false,false,false,false,true,false))
-        movieList!!.add(Movie(100006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
+         movieList = ArrayList<Movie>()
+         movieList!!.add(Movie(100001,1,"Inception","2010","use of dream-sharing technology",true,false,false,false,false,false))
+         movieList!!.add(Movie(100002,2,"Forrest Gump","1994","American romantic comedy-drama filmy",false,false,false,true,false,false))
+         movieList!!.add(Movie(100003,3,"Green Street Hooligans","2010","football hooliganism",false,false,false,true,false,false))
+         movieList!!.add(Movie(100004,4,"The Godfather","1972","Marlon Brando, Al Pacino, James Caan ",false,false,false,true,false,false))
+         movieList!!.add(Movie(100005,5," The Green Mile","1999","child murder and rape",false,false,false,false,true,false))
+         movieList!!.add(Movie(100006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
 
     }
 
@@ -134,15 +123,14 @@ class MainActivity : AppCompatActivity(),
     }
 
 
+
+
     fun createNewMovie(movie: Movie) {
 
-        //Toast.makeText(this, "TEST CREATE FUNCTION.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "TEST CREATE FUNCTION.", Toast.LENGTH_SHORT).show()
         movieList!!.add(movie)
-        adapter!!.notifyDataSetChanged()
+        adapter!!.notifyDataSetChanged()//deneme
     }
-
-
-
 
 
     fun saveMovie() {
@@ -184,6 +172,7 @@ class MainActivity : AppCompatActivity(),
 
 
 
+
         }
         drawerLayout.closeDrawer((GravityCompat.START))
         return  true
@@ -197,12 +186,12 @@ class MainActivity : AppCompatActivity(),
 
         supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, ListMovie()).commit()
 
-
-
-
-
     }
 
+    fun loadUpdateMovie() {
+
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
+    }
 
 
 
