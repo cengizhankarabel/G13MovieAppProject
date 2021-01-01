@@ -5,6 +5,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONTokener
 import java.io.*
+import kotlin.jvm.Throws
 
 class JSONSerializer (private val filename : String, private  val context: Context) {
 
