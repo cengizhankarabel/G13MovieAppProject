@@ -15,16 +15,6 @@
             android:icon="@drawable/add_photo_icon"
             android:title="@string/add_new_movie" />
 
-        <item
-            android:id="@+id/delete_movie"
-            android:icon="@drawable/delete_movie_icon"
-            android:title="@string/delete_movie" />
-
-        <item
-            android:id="@+id/update_movie"
-            android:icon="@drawable/update_movie_icon"
-            android:title="@string/update_movie" />
-
 
 
 

@@ -5,11 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +25,21 @@ import com.google.android.material.navigation.NavigationView
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var animFadeIn: Animation
+    companion object{
+
+        var process = 0/*NEW*/
+        var processUpdate = 0 /*Update*/
+        /*process = 1 "UPDATE" */
+        var movieList = ArrayList<Movie>()
+    }
+
 
 
 
     private lateinit var drawerLayout : DrawerLayout
 
-    private var movieList: ArrayList<Movie>? = null
+
     private var jsonSerializer: JSONSerializer? = null
 
     private var recyclerView: RecyclerView? = null
@@ -37,7 +51,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        animFadeIn= AnimationUtils.loadAnimation(this,R.anim.fade_in)
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -59,36 +73,37 @@ class MainActivity : AppCompatActivity(),
 
 
 
-         jsonSerializer = JSONSerializer("MyMovieList", applicationContext)
+        jsonSerializer = JSONSerializer("MyMovieList", applicationContext)
 
-         try {
-             movieList = jsonSerializer!!.load()
-             //Toast.makeText(this, "TEST LIST LOADING", Toast.LENGTH_SHORT).show()
-         } catch (e: Exception) {
-             movieList = ArrayList()
-             Log.e(TAG, "Error loading movie information...")
-         }
-
-         // supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
+        try {
+            movieList = jsonSerializer!!.load()
+            //Toast.makeText(this, "TEST LIST LOADING", Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            movieList = ArrayList()
+            Log.e(TAG, "Error loading movie information...")
+        }
 
 
 
 
-         recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
-         adapter = MovieAdapter(movieList!!)
-         val layoutManager = LinearLayoutManager(applicationContext)
-         recyclerView!!.layoutManager = layoutManager
-         recyclerView!!.itemAnimator = DefaultItemAnimator()
-         recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
-         recyclerView!!.adapter = adapter
-
-      //  initializeMovie()
+        recyclerView = findViewById<View>(R.id.recyclerView) as RecyclerView
+        adapter = MovieAdapter(this, movieList)
+        val layoutManager = LinearLayoutManager(applicationContext)
+        recyclerView!!.layoutManager = layoutManager
+        recyclerView!!.itemAnimator = DefaultItemAnimator()
+        recyclerView!!.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+        recyclerView!!.adapter = adapter
 
 
-     }//override onCreate bitis"
 
 
-         private fun initializeMovie(){
+        //  initializeMovie()
+
+
+    }//override onCreate bitis"
+
+
+    /* private fun initializeMovie(){
 
          movieList = ArrayList<Movie>()
          movieList!!.add(Movie(100001,1,"Inception","2010","use of dream-sharing technology",true,false,false,false,false,false))
@@ -98,7 +113,7 @@ class MainActivity : AppCompatActivity(),
          movieList!!.add(Movie(100005,5," The Green Mile","1999","child murder and rape",false,false,false,false,true,false))
          movieList!!.add(Movie(100006,6,"Titanic","1997","Leonardo DiCaprio, Kate Winslet, Billy Zane",false,false,false,true,false,false))
 
-    }
+     }*/
 
 
 
@@ -124,19 +139,50 @@ class MainActivity : AppCompatActivity(),
 
 
 
-
+    //process 1 demek yeni bir tane movie oluşturmak demek.
+    //bu nedenle add fonksiyonu çalışıyor
+    //eğer process 1 değilse remove ve add çalışıyor aynı filmi tekrar yapmasın
+    //sadece değiştirsin diye. processin değeri
     fun createNewMovie(movie: Movie) {
 
-        Toast.makeText(this, "TEST CREATE FUNCTION.", Toast.LENGTH_SHORT).show()
-        movieList!!.add(movie)
-        adapter!!.notifyDataSetChanged()//deneme
+        if(process == 0){
+            Toast.makeText(this, "Add Islemi Yapıldı proces = $process.", Toast.LENGTH_SHORT).show()
+            movieList.add(movie)
+            saveMovie()
+        }else{
+            Toast.makeText(this, "Update Islemi Yapıldı proces = $process.", Toast.LENGTH_SHORT).show()
+            movieList.removeAt(processUpdate)
+            movieList.add(processUpdate,movie)
+            saveMovie()
+            process=0
+            Toast.makeText(this, "Update Isleminden sonra  proces = $process.", Toast.LENGTH_SHORT).show()
+
+
+        }
+        adapter!!.notifyDataSetChanged()
+
     }
+
+    fun showMovie(movieToShow: Int) {
+        val dialog = FragmentShowMovie()
+        processUpdate = movieToShow
+        movieList[movieToShow].let { dialog.sendMovieSelected(it) }
+
+        findViewById<RecyclerView>(R.id.recyclerView).visibility = View.GONE
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+        fragmentTransaction.replace(R.id.fragmentSlides, FragmentShowMovie()).setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,R.anim.enter_left_to_right,R.anim.exit_left_to_right)
+        fragmentTransaction.commit()
+    }
+
+
 
 
     fun saveMovie() {
         Toast.makeText(this, "TEST SAVE FUNCTION.", Toast.LENGTH_SHORT).show()
         try {
-            jsonSerializer!!.save(this.movieList!!)
+            jsonSerializer!!.save(movieList)
         } catch (e: Exception) {
             Log.e(TAG, "Error loading notes...")
         }
@@ -144,7 +190,6 @@ class MainActivity : AppCompatActivity(),
 
     public override fun onPause() {
         super.onPause()
-        saveMovie()
         //Toast.makeText(this, "Group 13 working all the time", Toast.LENGTH_SHORT).show()
     }
 
@@ -160,20 +205,16 @@ class MainActivity : AppCompatActivity(),
 
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
-            R.id.list_movies -> supportFragmentManager.beginTransaction().replace(
-                    R.id.fragmentSlides, ListMovie()).commit()
-            R.id.add_movie -> supportFragmentManager.beginTransaction().replace(
+        if(item.itemId == R.id.list_movies){
+
+            findViewById<RecyclerView>(R.id.recyclerView).visibility = View.VISIBLE }
+
+        if(item.itemId == R.id.add_movie){
+            supportFragmentManager.beginTransaction().replace(
                     R.id.fragmentSlides, FragmentNewMovie()).commit()
-            R.id.delete_movie -> supportFragmentManager.beginTransaction().replace(
-                    R.id.fragmentSlides, FragmentDeleteMovie()).commit()
-            R.id.update_movie -> supportFragmentManager.beginTransaction().replace(
-                    R.id.fragmentSlides, FragmentUpdateMovie()).commit()
+            findViewById<RecyclerView>(R.id.recyclerView).visibility = View.GONE }
 
 
-
-
-        }
         drawerLayout.closeDrawer((GravityCompat.START))
         return  true
     }
@@ -184,13 +225,8 @@ class MainActivity : AppCompatActivity(),
     fun hideFragment() {
 
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, ListMovie()).commit()
+        findViewById<RecyclerView>(R.id.recyclerView).visibility = View.VISIBLE
 
-    }
-
-    fun loadUpdateMovie() {
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentSlides, FragmentNewMovie()).commit()
     }
 
 

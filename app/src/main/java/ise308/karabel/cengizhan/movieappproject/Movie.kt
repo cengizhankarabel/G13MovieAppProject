@@ -21,11 +21,12 @@ private val JSON_COUNT = "count"
 private val JSON_ID = "id"
 private val JSON_LIST = "list"
 private val JSON_IMAGE = "image"
+private val JSON_UPDATE = "update"
 
 
 
 
-var count: Int = 6
+var count: Int = 0
 class Movie {
 
 
@@ -41,6 +42,7 @@ class Movie {
     var drama: Boolean = false
     var thriller: Boolean = false
     var western: Boolean = false
+    var processUpdate : Int = 0
 
 
 
@@ -56,6 +58,7 @@ class Movie {
         drama = jsonObject.getBoolean(JSON_DRAMA)
         thriller = jsonObject.getBoolean(JSON_THRILLER)
         western = jsonObject.getBoolean(JSON_WESTERN)
+        processUpdate = jsonObject.getInt(JSON_UPDATE)
 
         id = jsonObject.getInt(JSON_ID)
         listNumber = jsonObject.getInt(JSON_LIST)
@@ -105,6 +108,7 @@ class Movie {
         jsonObject.put(JSON_ID,id)
         jsonObject.put(JSON_LIST,listNumber)
         jsonObject.put(JSON_IMAGE, image)
+        jsonObject.put(JSON_UPDATE, processUpdate)
 
 
 

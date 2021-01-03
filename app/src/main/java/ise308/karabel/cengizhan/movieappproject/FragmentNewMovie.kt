@@ -18,26 +18,27 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import kotlin.concurrent.timer
 
 private const val TAG = "FragmentNewMovie" //for log
 class FragmentNewMovie : Fragment() {
 
-    private lateinit var imgView: ImageView
+    lateinit var imgView: ImageView
     private var imageUri: Uri? = null
     private val imagePickCode = 100
 
 
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
 
-
-
         val view = inflater.inflate(R.layout.slide_add_movie, container, false)
+
 
 
         val editTitle = view.findViewById<EditText>(R.id.edit_title)
@@ -73,6 +74,7 @@ class FragmentNewMovie : Fragment() {
         }
 
         buttonOk.setOnClickListener {
+            MainActivity.process = 0
 
             count +=1
 
@@ -93,9 +95,9 @@ class FragmentNewMovie : Fragment() {
             newMovie.image = imageUri
 
 
+
             val callActivity = activity as MainActivity
             callActivity.createNewMovie(newMovie)
-            callActivity.saveMovie()
             callActivity.hideFragment()
 
 

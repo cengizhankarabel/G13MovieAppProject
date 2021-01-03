@@ -38,4 +38,11 @@
     <string name="add_new_movie">Add a New Movie</string>
     <string name="add_first_movie">"Add first Movie"</string>
     <string name="title_activity_movie_new">MovieNewActivity</string>
+
+
+
+    <string name="detail_title">TITLE :</string>
+    <string name="detail_category">CATEGORY :</string>
+    <string name="detail_year">YEAR : :</string>
+    <string name="detail_description">DESCRIPTION :</string>
 </resources>
